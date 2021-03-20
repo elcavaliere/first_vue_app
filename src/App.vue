@@ -1,17 +1,23 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>{{ title }}</h1>
+    <Modal title="My Modal" content="Modal content"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import Modal from './components/Modal'
 
 export default {
   name: 'App',
+  data() {
+    return {
+      title: 'My first Vue App :)'
+    }
+  },
   components: {
-    HelloWorld
+    Modal,
   }
 }
 </script>
@@ -24,5 +30,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+h1{
+
 }
 </style>
