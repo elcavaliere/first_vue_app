@@ -1,5 +1,5 @@
 <template>
-  <div class="backdrop">
+  <div class="backdrop" @click.self="hideModal">
     <div class="modal" :class="{ dark: theme === 'dark'}">
       <h1>{{ header }}</h1>
       <p>{{ text }}</p>
@@ -10,7 +10,12 @@
 <script>
 export default {
   name: "Modal",
-  props: ['header','text','theme']
+  props: ['header','text','theme'],
+  methods: {
+    hideModal() {
+      this.$emit('hideModal')
+    }
+  }
 }
 </script>
 

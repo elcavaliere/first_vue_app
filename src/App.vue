@@ -1,7 +1,12 @@
 <template>
   <div id="app">
     <h1>{{ title }}</h1>
-    <Modal :header="header" :text="text" theme="dark" />
+    <div v-if="showModal" >
+      <Modal :header="header" :text="text" theme="dark" @hideModal="toggleModal" />
+    </div>
+    <button @click="toggleModal">
+      Toggle Modal
+    </button>
   </div>
 </template>
 
@@ -15,11 +20,17 @@ export default {
     return {
       title: 'My first Vue App :)',
       header: 'Sign up for the Giveaway',
-      text: 'Grab your ninja swag for half price !'
+      text: 'Grab your ninja swag for half price !',
+      showModal: false
     }
   },
   components: {
     Modal,
+  },
+  methods: {
+    toggleModal(){
+      this.showModal = !this.showModal
+    }
   }
 }
 </script>
