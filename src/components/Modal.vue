@@ -1,8 +1,8 @@
 <template>
   <div class="backdrop">
-    <div class="modal">
-      <h1>{{ title }}</h1>
-      <p>{{ content }}</p>
+    <div class="modal" :class="{ dark: theme === 'dark'}">
+      <h1>{{ header }}</h1>
+      <p>{{ text }}</p>
     </div>
   </div>
 </template>
@@ -10,7 +10,7 @@
 <script>
 export default {
   name: "Modal",
-  props: ['title','content']
+  props: ['header','text','theme']
 }
 </script>
 
@@ -33,5 +33,12 @@ export default {
     color: #03cfb4;
     border: none;
     padding: 0;
+  }
+  .modal.dark{
+    background-color: #2c3e50;
+    color: #ffffff;
+  }
+  .modal.dark h1{
+    color: #fff;
   }
 </style>
