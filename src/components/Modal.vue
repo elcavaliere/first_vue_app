@@ -1,8 +1,10 @@
 <template>
   <div class="backdrop" @click.self="hideModal">
     <div class="modal" :class="{ dark: theme === 'dark'}">
-      <h1>{{ header }}</h1>
-      <p>{{ text }}</p>
+      <slot></slot>
+      <div class="actions">
+        <slot name="actions"></slot>
+      </div>
     </div>
   </div>
 </template>
@@ -10,7 +12,7 @@
 <script>
 export default {
   name: "Modal",
-  props: ['header','text','theme'],
+  props: ['theme'],
   methods: {
     hideModal() {
       this.$emit('hideModal')
@@ -44,6 +46,23 @@ export default {
     color: #ffffff;
   }
   .modal.dark h1{
+    color: #fff;
+  }
+
+  .modal .actions{
+    color: #fff;
+    padding: 20px 0;
+  }
+
+  .modal .actions a{
+    color: #333;
+    padding: 8px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    text-decoration: none;
+    margin: 10px;
+  }
+  .modal.dark .actions a{
     color: #fff;
   }
 </style>
